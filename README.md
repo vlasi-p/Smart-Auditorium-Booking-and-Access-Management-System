@@ -43,7 +43,7 @@ At KIU, students can reserve auditoriums for group projects or studying after 18
 
 | Name                    | GitHub                                            |
 |-------------------------|---------------------------------------------------|
-| **Vlasi Pirvelashvili** | [@vlasipirvelashvili](https://github.com/vlasi_p) |
+| **Vlasi Pirvelashvili** | [@vlasipirvelashvili](https://github.com/vlasi-p) |
 | **Saba Shubitidze**     | [@saba-shubitidze](https://github.com/sabashub)   |
 
 ---
