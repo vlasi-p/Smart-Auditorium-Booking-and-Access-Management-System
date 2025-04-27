@@ -1,7 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 // Configure CORS test test
@@ -14,6 +13,14 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod();
     });
 });
+
+// Register custom services
+builder.Services.AddSingleton<OtpService>();
+builder.Services.AddSingleton<JwtService>();
+
+
+// Add Controllers
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -28,8 +35,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Add your actual API endpoints here
-// Example:
-// app.MapGet("/api/resource", async () => { /* Your logic here */ });
+//use controllers
+app.MapControllers();
 
 app.Run();
