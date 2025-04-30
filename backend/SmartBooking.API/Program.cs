@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using SmartBooking.API.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,6 +21,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddSingleton<OtpService>();
 builder.Services.AddSingleton<JwtService>();
 
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
 
 // Add Controllers
 builder.Services.AddControllers();
