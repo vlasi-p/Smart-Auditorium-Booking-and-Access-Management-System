@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartBooking.API.Data;
 
 namespace SmartBooking.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("auditoriums")]
     public class AuditoriumsController : ControllerBase
     {
         private readonly AppDbContext _context;

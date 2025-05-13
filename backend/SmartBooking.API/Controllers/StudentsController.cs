@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartBooking.API.Data;
@@ -6,7 +6,7 @@ using SmartBooking.API.Models;
 
 namespace SmartBooking.API.Controllers
 {
-    [Route("api/students")]
+    [Route("students")]
     [ApiController]
     public class StudentsController : ControllerBase
     {
