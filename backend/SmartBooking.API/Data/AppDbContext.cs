@@ -15,55 +15,68 @@ namespace SmartBooking.API.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            
+            // Configure Student entity
             modelBuilder.Entity<Student>(entity =>
             {
-                entity.HasIndex(e => e.Email).IsUnique();
-                entity.HasIndex(e => e.StudentId).IsUnique();
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired();
+                entity.Property(e => e.LastName).IsRequired();
+                entity.Property(e => e.Email).IsRequired();
+                
+                entity.Property(e => e.Phone).IsRequired(false);
+                entity.Property(e => e.PrivateNumber).IsRequired(false);
             });
 
-            
-            modelBuilder.Entity<Auditorium>(entity =>
-            {
-                entity.Property(a => a.Status)
-                      .HasDefaultValue("available");
-            });
-
-            
+            // Configure Reservation entity
             modelBuilder.Entity<Reservation>(entity =>
             {
-                entity.Property(r => r.Status)
-                      .HasDefaultValue("pending");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.FirstName).IsRequired();
+                entity.Property(e => e.LastName).IsRequired();
+                entity.Property(e => e.AuditoriumId).IsRequired();
+                entity.Property(e => e.AuditoriumName).IsRequired();
+                entity.Property(e => e.StartTime).IsRequired();
+                entity.Property(e => e.EndTime).IsRequired(false);
+                entity.Property(e => e.Status).IsRequired().HasDefaultValue("pending");
+                entity.Property(e => e.SecurityCode).IsRequired(false);
 
-                entity.HasIndex(r => r.SecurityCode)
-                      .IsUnique();
-
-                entity.HasOne(r => r.Student)
-                      .WithMany(s => s.Reservations)
-                      .HasForeignKey(r => r.StudentId)
-                      .OnDelete(DeleteBehavior.Cascade);
-
-                entity.HasOne(r => r.Auditorium)
-                      .WithMany(a => a.Reservations)
+                // Relationship with Auditorium
+                entity.HasOne<Auditorium>()
+                      .WithMany()
                       .HasForeignKey(r => r.AuditoriumId)
-                      .OnDelete(DeleteBehavior.Cascade);
-
-                entity.HasOne(r => r.Log)
-                      .WithOne(l => l.Reservation)
-                      .HasForeignKey<Log>(l => l.ReservationId);
+                      .OnDelete(DeleteBehavior.Restrict);
             });
 
-            
+            // Configure Log entity
             modelBuilder.Entity<Log>(entity =>
             {
-                entity.HasKey(l => l.ReservationId); 
+                entity.HasKey(e => e.ReservationId);
+                entity.Property(e => e.CheckInTime).IsRequired(false);
+                entity.Property(e => e.CheckOutTime).IsRequired(false);
+
+                // Relationship with Reservation (1:1)
+                entity.HasOne(l => l.Reservation)
+                      .WithOne()
+                      .HasForeignKey<Log>(l => l.ReservationId)
+                      .OnDelete(DeleteBehavior.Cascade);
             });
 
-            
+            // Configure Auditorium entity
+            modelBuilder.Entity<Auditorium>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired();
+                entity.Property(e => e.Status).IsRequired().HasDefaultValue("available");
+            });
+
+            // Configure Admin entity
             modelBuilder.Entity<Admin>(entity =>
             {
-                entity.HasIndex(a => a.Email).IsUnique();
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired();
+                entity.Property(e => e.Email).IsRequired();
             });
         }
     }
+    
 }

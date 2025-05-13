@@ -12,8 +12,8 @@ using SmartBooking.API.Data;
 namespace SmartBooking.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250429102753_InitialCreatee")]
-    partial class InitialCreatee
+    [Migration("20250507182338_AddEmalToReservation")]
+    partial class AddEmalToReservation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,16 +35,13 @@ namespace SmartBooking.API.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Email")
-                        .IsUnique();
 
                     b.ToTable("Admins");
                 });
@@ -56,9 +53,6 @@ namespace SmartBooking.API.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -102,11 +96,27 @@ namespace SmartBooking.API.Migrations
                     b.Property<int>("AuditoriumId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndTime")
+                    b.Property<string>("AuditoriumName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("EndTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityCode")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
@@ -117,18 +127,9 @@ namespace SmartBooking.API.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasDefaultValue("pending");
 
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AuditoriumId");
-
-                    b.HasIndex("SecurityCode")
-                        .IsUnique()
-                        .HasFilter("[SecurityCode] IS NOT NULL");
-
-                    b.HasIndex("StudentId");
 
                     b.ToTable("Reservations");
                 });
@@ -143,7 +144,7 @@ namespace SmartBooking.API.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -153,17 +154,13 @@ namespace SmartBooking.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StudentId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrivateNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Email")
-                        .IsUnique();
-
-                    b.HasIndex("StudentId")
-                        .IsUnique();
 
                     b.ToTable("Students");
                 });
@@ -171,7 +168,7 @@ namespace SmartBooking.API.Migrations
             modelBuilder.Entity("SmartBooking.API.Models.Log", b =>
                 {
                     b.HasOne("SmartBooking.API.Models.Reservation", "Reservation")
-                        .WithOne("Log")
+                        .WithOne()
                         .HasForeignKey("SmartBooking.API.Models.Log", "ReservationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -181,36 +178,11 @@ namespace SmartBooking.API.Migrations
 
             modelBuilder.Entity("SmartBooking.API.Models.Reservation", b =>
                 {
-                    b.HasOne("SmartBooking.API.Models.Auditorium", "Auditorium")
-                        .WithMany("Reservations")
+                    b.HasOne("SmartBooking.API.Models.Auditorium", null)
+                        .WithMany()
                         .HasForeignKey("AuditoriumId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("SmartBooking.API.Models.Student", "Student")
-                        .WithMany("Reservations")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Auditorium");
-
-                    b.Navigation("Student");
-                });
-
-            modelBuilder.Entity("SmartBooking.API.Models.Auditorium", b =>
-                {
-                    b.Navigation("Reservations");
-                });
-
-            modelBuilder.Entity("SmartBooking.API.Models.Reservation", b =>
-                {
-                    b.Navigation("Log");
-                });
-
-            modelBuilder.Entity("SmartBooking.API.Models.Student", b =>
-                {
-                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }
