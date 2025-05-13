@@ -1,0 +1,25 @@
+/* Background styles */
+.background-container {
+    position: fixed; /* Fix the background to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    background-image: url('../../assets/cover.jpg'); /* Path to your image */
+    background-size: cover; /* Ensure the image covers the entire container */
+    background-position: center; /* Center the image */
+    z-index: -1; /* Keep the background behind other content */
+  }
+  
+  /* Wrapper around the whole app */
+  .app-container {
+    position: relative; /* Ensure content appears over the background */
+    min-height: 100vh; /* Ensure the container is at least the height of the viewport */
+  }
+  
+  /* Wrapper around Header, Routes, and Footer */
+  .content-container {
+    position: relative;
+    z-index: 1; /* Ensure content (header, routes, footer) appears on top of the background */
+  }
+  

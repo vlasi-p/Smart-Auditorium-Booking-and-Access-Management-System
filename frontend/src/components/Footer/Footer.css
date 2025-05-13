@@ -1,0 +1,20 @@
+.custom-footer {
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+    padding: 1rem 2rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    margin-top: auto;
+    z-index: 5;
+  }
+  
+  .footer-text {
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+  

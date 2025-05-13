@@ -1,0 +1,69 @@
+.custom-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2C3E50;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .kiu-logo {
+    height: 40px;
+    width: auto;
+    margin-right: 1rem;
+  }
+  
+  .logo-text {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+  }
+  .login-button {
+    background-color: red;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .login-button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+  }
+  .custom-header-login-button {
+    background-color: #d32f2f;
+    color: white;
+    font-size: 1.5rem;          /* Bigger text */
+    padding: 16px 36px;         /* Bigger button size */
+    border: none;
+    border-radius: 12px;        /* Softer corners */
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Subtle elevation */
+  }
+  
+  .custom-header-login-button:hover {
+    background-color: #b71c1c;
+    transform: scale(1.08);     /* Slight grow on hover */
+  }
+  
+  .custom-header-login-button:active {
+    transform: scale(0.96);     /* Press-down effect */
+  }
+  
+  

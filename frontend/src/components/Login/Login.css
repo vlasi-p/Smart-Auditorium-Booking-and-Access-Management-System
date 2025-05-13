@@ -1,0 +1,96 @@
+/* Container adjustments */
+.login-container {
+  margin-top: 180px; /* pushed down */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bigger, modern paper */
+.login-paper {
+  padding: 80px;
+  background: linear-gradient(145deg, #c58686, #b99d9d);
+  border-radius: 40px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  width: 700px;
+  transition: all 0.3s ease-in-out;
+  
+}
+
+/* Title styling */
+.login-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* Input fields */
+.input-field .MuiOutlinedInput-root {
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.input-field .MuiOutlinedInput-root:hover {
+  box-shadow: 0 0 0 2px rgba(255, 61, 0, 0.2);
+}
+
+/* Modern button */
+.login-button {
+  width: 100%;
+  padding: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 16px;
+  background-color: #ff3d00;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #e53900;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.login-button:active {
+  transform: scale(0.98);
+}
+
+/* Alert styling */
+.custom-alert {
+  margin-top: 20px;
+  padding: 14px 24px;
+  background-color: #e3f2fd;
+  color: #0d47a1;
+  border-radius: 12px;
+  border: 1px solid #0d47a1;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
