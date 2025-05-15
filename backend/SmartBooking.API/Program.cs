@@ -19,6 +19,7 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod();
     });
 });
+
 builder.Services.AddSingleton<EmailService>(sp => new EmailService(
     builder.Configuration["Email:SmtpServer"],
     int.Parse(builder.Configuration["Email:SmtpPort"]),
@@ -64,6 +65,7 @@ var app = builder.Build();
 
 // Middleware
 app.UseCors("AllowFrontend");
+app.UseCors("AllowLocalhost");
 
 if (app.Environment.IsDevelopment())
 {
