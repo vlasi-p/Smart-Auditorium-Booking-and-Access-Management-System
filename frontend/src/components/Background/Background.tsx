@@ -1,14 +1,9 @@
+// src/components/Background/Background.jsx
 import React from 'react';
-import cover from '../../assets/cover.jpg'
-import './Background.css';  // Ensure your CSS is correctly imported
+import './Background.css';
 
 const Background = () => {
-  return (
-    <div className="background-container">
-      <h1>Welcome to the Page</h1>
-      {/* Add other components or content here */}
-    </div>
-  );
+  return <div className="background-image" />;
 };
 
 export default Background;

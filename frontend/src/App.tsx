@@ -1,21 +1,41 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 import Routes from './routes';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import './App.css'; // Import the layout styles
+import Background from './components/Background/Background';
+import './App.css';
 
-function App() {
+const AppWrapper = () => {
+  const location = useLocation();
+  const [showBackground, setShowBackground] = useState(true);
+
+  useEffect(() => {
+    // Hide background when navigating away from the root ("/")
+    if (location.pathname !== '/') {
+      setShowBackground(false);
+    }
+  }, [location.pathname]);
+
   return (
-    <div className="app-container">
-      <Router>
+    <>
+      {showBackground && <Background />}
+      <div className="app-container">
         <Header />
         <main className="main-content">
           <Routes />
         </main>
         <Footer />
-      </Router>
-    </div>
+      </div>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <AppWrapper />
+    </Router>
   );
 }
 

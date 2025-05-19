@@ -1,103 +1,155 @@
 import React, { useState } from 'react';
-import { Button, Container, TextField, Typography, Paper, Box, Alert } from '@mui/material';
+import {
+  Button,
+  Container,
+  TextField,
+  Typography,
+  Paper,
+  Box,
+  Alert
+} from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate for navigation
-import './Login.css';  // Import the CSS file for custom styling
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode'
+import './Login.css';
 
-const Login = () => {
+interface JwtPayload {
+  user: 'admin' | 'student';
+}
+
+interface LoginProps {
+  onLoginSuccess: () => void;
+}
+
+const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
   const [isEmailSent, setIsEmailSent] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
-  const navigate = useNavigate();  // Hook to navigate to other pages
-
-  // Simulating sending the verification code
-  const sendCode = () => {
-    if (email) {
-      setIsEmailSent(true); // Simulate email sent
-      alert('A verification code has been sent to your email!');
+  const sendCode = async () => {
+    setError('');
+    if (!email) {
+      setError('Please enter your email.');
+      return;
+    }
+    setLoading(true);
+    try {
+      await axios.post('https://localhost:5001/auth/request-otp', { Email: email });
+      setIsEmailSent(true);
+    } catch (err) {
+      console.error(err);
+      setError('Failed to send OTP. Try again later.');
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Handle login by validating the code
-  const handleLogin = () => {
-    // Replace this with actual logic to verify the code
-    if (code === '1234') { // Hardcoded code for now
-      setIsLoggedIn(true);  // Set logged-in state to true
-      alert('Login successful!');
-      navigate('/auditoriums');  // Navigate to the auditoriums page on successful login
-    } else {
-      alert('Invalid code, please try again.');
+  const handleLogin = async () => {
+    setError('');
+    if (!code) {
+      setError('Please enter the OTP.');
+      return;
+    }
+    setLoading(true);
+    try {
+      const resp = await axios.post('https://localhost:5001/auth/verify-otp', {
+        Email: email,
+        Otp: code
+      });
+      const token: string = resp.data.token;
+      localStorage.setItem('token', token);
+
+      const payload = jwtDecode<JwtPayload>(token);
+      const userType = payload.user;
+
+      setIsLoggedIn(true);
+
+      onLoginSuccess(); // Notify parent that login succeeded
+
+      setTimeout(() => {
+        if (userType === 'admin') {
+          navigate('/admin');
+        } else {
+          navigate('/auditoriums');
+        }
+      }, 1000);
+    } catch (err) {
+      console.error(err);
+      setError('Invalid OTP or login failed.');
+    } finally {
+      setLoading(false);
     }
   };
-
-  if (isLoggedIn) {
-    // Optionally, you can display a message or redirect the user
-    return <Typography variant="h6">You are logged in! Redirecting...</Typography>;
-  }
 
   return (
     <Container maxWidth="sm" className="login-container">
-      <Paper elevation={3} className="login-paper">
-        <Typography variant="h5" gutterBottom className="login-title">
-          {isEmailSent ? 'Enter the Code Sent to Your Email' : 'Enter your KIU email'}
-        </Typography>
-        <Box className="input-container">
-          {!isEmailSent ? (
-            // Email Input
-            <TextField
-              fullWidth
-              label="University Email"
-              variant="outlined"
-              margin="normal"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="input-field"
-            />
-          ) : (
-            // Code Input
-            <TextField
-              fullWidth
-              label="Verification Code"
-              variant="outlined"
-              margin="normal"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-              className="input-field"
-            />
-          )}
-          
-          {!isEmailSent ? (
-            // Send Code Button
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={sendCode}
-              className="login-button"
-            >
-              Send Code
-            </Button>
-          ) : (
-            // Login Button
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleLogin}
-              className="login-button"
-            >
-              Login
-            </Button>
-          )}
-          
-          {isEmailSent && !isLoggedIn && (
-            // Styled success alert with custom class
-            <Alert icon={<CheckIcon fontSize="inherit" />} severity="success" className="custom-alert">
-              A verification code has been sent to your email.
-            </Alert>
-          )}
-        </Box>
-      </Paper>
+      {!isLoggedIn && (
+        <Paper elevation={3} className="login-paper">
+          <Typography variant="h5" gutterBottom className="login-title">
+            {isEmailSent ? 'Enter the Code Sent to Your Email' : 'Enter your KIU email'}
+          </Typography>
+          <Box className="input-container">
+            {!isEmailSent ? (
+              <TextField
+                fullWidth
+                label="University Email"
+                variant="outlined"
+                margin="normal"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                className="input-field"
+              />
+            ) : (
+              <TextField
+                fullWidth
+                label="Verification Code"
+                variant="outlined"
+                margin="normal"
+                value={code}
+                onChange={e => setCode(e.target.value)}
+                className="input-field"
+              />
+            )}
+
+            {!isEmailSent ? (
+              <Button
+                variant="contained"
+                onClick={sendCode}
+                disabled={loading}
+                className="login-button"
+              >
+                {loading ? 'Sending Code…' : 'Send Code'}
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                onClick={handleLogin}
+                disabled={loading}
+                className="login-button"
+              >
+                {loading ? 'Verifying…' : 'Login'}
+              </Button>
+            )}
+
+            {isEmailSent && !loading && (
+              <Alert
+                icon={<CheckIcon fontSize="inherit" />}
+                severity="success"
+                className="custom-alert"
+              >
+                A verification code has been sent to your email.
+              </Alert>
+            )}
+
+            {error && <Alert severity="error">{error}</Alert>}
+          </Box>
+        </Paper>
+      )}
     </Container>
   );
 };

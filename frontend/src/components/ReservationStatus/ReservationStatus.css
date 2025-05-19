@@ -1,0 +1,68 @@
+.status-container {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.status-container h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.status-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 12px;
+  padding: 16px;
+  background: #fafafa;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.status-card > div {
+  font-size: 1rem;
+  color: #444;
+}
+
+.finish-button {
+  display: block;
+  margin: 0 auto;
+  padding: 14px 32px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.finish-button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+.finish-button:disabled {
+  background-color: #94d3a2;
+  cursor: not-allowed;
+}
+
+.checkout-success {
+  text-align: center;
+  margin-top: 16px;
+  color: #28a745;
+  font-weight: bold;
+}
+
+.status-loading,
+.status-error {
+  text-align: center;
+  margin: 80px;
+  font-size: 1.2rem;
+  color: #555;
+}

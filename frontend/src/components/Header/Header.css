@@ -65,5 +65,14 @@
   .custom-header-login-button:active {
     transform: scale(0.96);     /* Press-down effect */
   }
-  
+  .nav-links {
+  display: flex;
+  align-items: center;
+  color: white; /* Make sure text is visible */
+}
+
+/* Avatar inside nav */
+.nav-links .MuiAvatar-root {
+  margin-right: 0.5rem;
+}
   

@@ -1,15 +1,14 @@
+// src/routes.js
 import React from 'react';
 import { Routes as ReactRouterRoutes, Route } from 'react-router-dom';
-import Login from './components/Login/Login';  // Path to your Login component
-import Auditoriums from './components/Auditoriums/Auditoriums'; // Path to your Auditoriums component
+import Auditoriums from './components/Auditoriums/Auditoriums';
+import ReservationStatus from './components/ReservationStatus/ReservationStatus';
 
-const Routes = () => {
-  return (
-    <ReactRouterRoutes>
-      
-      <Route path="/auditoriums" element={<Auditoriums />} />  {/* Auditoriums page route */}
-    </ReactRouterRoutes>
-  );
-};
+const Routes = () => (
+  <ReactRouterRoutes>
+    <Route path="/auditoriums" element={<Auditoriums />} />
+    <Route path="/reservation/:id" element={<ReservationStatus />} />
+  </ReactRouterRoutes>
+);
 
 export default Routes;
