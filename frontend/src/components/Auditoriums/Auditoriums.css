@@ -1,22 +1,21 @@
 /* Container */
 .auditoriums-page {
-  padding: 60px 30px;
+  padding: 60px;
   background-color: #f4f4f4;
-  min-height: 100vh;
+  height: 100%;
+  margin: 0;
   box-sizing: border-box;
+  width: 100%;
 }
 
-/* Each group section */
-.aud-group {
-  margin-bottom: 3rem;
-}
+
 
 /* Group heading */
 .group-title {
   text-align: center;      /* center the titles */
   font-weight: bold;
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  
 }
 
 /* Horizontal row of cards */
@@ -40,7 +39,7 @@
 
 /* Inner panel style */
 .door-panel {
-  background: linear-gradient(to bottom, #b48860, #a57250);
+  background: linear-gradient(to bottom, #140957, #130853);
   border: 2px solid #5e4028;
   border-radius: 12px;
   height: 250px;
@@ -155,4 +154,29 @@
   );
   padding: 1rem;
   border-radius: 8px;
+}
+.active-reservation {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 24px;
+  background: #ffe0b2;
+  border: 2px solid #ff9800;
+  border-radius: 8px;
+  text-align: center;
+}
+.active-reservation h2 {
+  margin-bottom: 16px;
+}
+.active-reservation button {
+  margin-top: 12px;
+  padding: 8px 20px;
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.active-reservation button:disabled {
+  opacity: 0.6;
+  cursor: default;
 }

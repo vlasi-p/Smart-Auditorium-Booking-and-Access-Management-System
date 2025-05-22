@@ -1,60 +1,54 @@
+// routes.jsx
 import React from 'react';
 import { Routes as ReactRouterRoutes, Route } from 'react-router-dom';
-import Login from './components/Login/Login';  // Path to your Login component
-import Auditoriums from './components/Auditoriums/Auditoriums'; // Path to your Auditoriums component
+import Login from './components/Login/Login';
+import Auditoriums from './components/Auditoriums/Auditoriums';
+import AdminPage from './pages/AdminPage';
+import ReservationStatus from './components/ReservationStatus/ReservationStatus';
+import AdminLayout from './layouts/AdminLayout';
+import MainLayout from './layouts/MainLayout';
+import LoginPage from './pages/LoginPage';
 
 const Routes = () => {
   return (
     <ReactRouterRoutes>
-      
-      <Route path="/auditoriums" element={<Auditoriums />} />  {/* Auditoriums page route */}
+      {/* Routes using MainLayout (includes Header/Footer) */}
+      <Route
+        path="/"
+        element={
+          <MainLayout>
+            <LoginPage />
+          </MainLayout>
+        }
+      />
+      <Route
+        path="/auditoriums"
+        element={
+          <MainLayout>
+            <Auditoriums />
+          </MainLayout>
+        }
+      />
+      <Route
+        path="/reservation/:id"
+        element={
+          <MainLayout>
+            <ReservationStatus />
+          </MainLayout>
+        }
+      />
+
+      {/* Route without Header/Footer */}
+      <Route
+        path="/admin"
+        element={
+          <AdminLayout>
+            <AdminPage />
+          </AdminLayout>
+        }
+      />
     </ReactRouterRoutes>
   );
 };
 
-// export default Routes;
-
-
-// src/routes.tsx
-import { Routes, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import AuditoriumsPage from './pages/AuditoriumsPage';
-import AdminPage from './pages/AdminPage';
-import MainLayout from './layouts/MainLayout';
-import AdminLayout from './layouts/AdminLayout';
-
-const AppRoutes = () => (
-  <Routes>
-    {/* Regular user layout */}
-    <Route
-      path="/"
-      element={
-        <MainLayout>
-          <LoginPage />
-        </MainLayout>
-      }
-    />
-    <Route
-      path="/auditoriums"
-      element={
-        <MainLayout>
-          <AuditoriumsPage />
-        </MainLayout>
-      }
-    />
-
-    {/* Admin-specific layout */}
-    <Route
-      path="/admin"
-      element={
-        <AdminLayout>
-          <AdminPage />
-        </AdminLayout>
-      }
-    />
-    
-  </Routes>
-);
-
-export default AppRoutes;
-
+export default Routes;

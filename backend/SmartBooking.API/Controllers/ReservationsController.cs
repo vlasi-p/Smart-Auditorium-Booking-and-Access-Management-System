@@ -48,6 +48,16 @@ namespace SmartBooking.API.Controllers
 
             return reservation;
         }
+        [HttpGet("by-email/{email}")]
+        public async Task<ActionResult<Reservation[]>> GetByEmail(string email)
+        {
+            var reservations = await _context.Reservations
+                .Where(r => r.Email == email)
+                .OrderByDescending(r => r.StartTime)
+                .ToArrayAsync();
+
+            return Ok(reservations);
+        }
 
         private string GenerateSecurityCode()
         {

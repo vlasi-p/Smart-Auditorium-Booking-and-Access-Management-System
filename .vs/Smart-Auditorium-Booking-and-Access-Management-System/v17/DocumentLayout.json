@@ -1,0 +1,358 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\controllers\\reservationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\controllers\\reservationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\controllers\\authcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\controllers\\authcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\dtos\\reservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\dtos\\reservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\controllers\\auditoriumscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\controllers\\auditoriumscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\models\\log.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\models\\log.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\dtos\\admindecisiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\dtos\\admindecisiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\dtos\\requestotpdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\dtos\\requestotpdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\dtos\\verifyotpdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\dtos\\verifyotpdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\models\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\models\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\services\\otpservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\services\\otpservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|c:\\users\\saba\\source\\repos\\smart-auditorium-booking-and-access-management-system\\backend\\smartbooking.api\\smartbooking.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3DEA2DB3-82EF-1FDC-7F87-B7B7A92C9758}|backend\\SmartBooking.API\\SmartBooking.API.csproj|solutionrelative:backend\\smartbooking.api\\smartbooking.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StudentsController.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Controllers\\StudentsController.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Controllers\\StudentsController.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Controllers\\StudentsController.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Controllers\\StudentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T20:48:58.842Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Services\\EmailService.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Services\\EmailService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAlwCUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T10:29:07.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAlwEcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T09:21:14.955Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthControllers.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Controllers\\AuthControllers.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Controllers\\AuthControllers.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Controllers\\AuthControllers.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Controllers\\AuthControllers.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAgwF0AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T14:07:56.408Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Services\\JwtService.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Services\\JwtService.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Services\\JwtService.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Services\\JwtService.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T09:37:23.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\appsettings.json",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\appsettings.json",
+              "RelativeToolTip": "backend\\SmartBooking.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-28T14:38:54.32Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReservationsController.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Controllers\\ReservationsController.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Controllers\\ReservationsController.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Controllers\\ReservationsController.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Controllers\\ReservationsController.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAtwDIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T09:22:06.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAACgzMzMzAwuwAkAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T13:04:22.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ReservationDto.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\DTOs\\ReservationDto.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\DTOs\\ReservationDto.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\DTOs\\ReservationDto.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\DTOs\\ReservationDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T09:44:58.129Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Student.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Models\\Student.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Models\\Student.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Models\\Student.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Models\\Student.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T12:32:37.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Log.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Models\\Log.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Models\\Log.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Models\\Log.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Models\\Log.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T14:36:12.356Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AuditoriumsController.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Controllers\\AuditoriumsController.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Controllers\\AuditoriumsController.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Controllers\\AuditoriumsController.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Controllers\\AuditoriumsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T13:15:54.306Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AdminDecisionDto.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\DTOs\\AdminDecisionDto.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\DTOs\\AdminDecisionDto.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\DTOs\\AdminDecisionDto.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\DTOs\\AdminDecisionDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T18:09:31.591Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Reservation.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Models\\Reservation.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Models\\Reservation.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Models\\Reservation.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Models\\Reservation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T14:35:45.79Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Program.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Program.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Program.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAjwBUAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T14:40:23.647Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RequestOtpDto.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\DTOs\\RequestOtpDto.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\DTOs\\RequestOtpDto.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\DTOs\\RequestOtpDto.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\DTOs\\RequestOtpDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T08:52:04.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "VerifyOtpDto.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\DTOs\\VerifyOtpDto.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\DTOs\\VerifyOtpDto.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\DTOs\\VerifyOtpDto.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\DTOs\\VerifyOtpDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T09:14:02.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Admin.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Models\\Admin.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Models\\Admin.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Models\\Admin.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Models\\Admin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T14:36:54.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "OtpServices.cs",
+              "DocumentMoniker": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Services\\OtpServices.cs",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\Services\\OtpServices.cs",
+              "ToolTip": "C:\\Users\\Saba\\source\\repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\Services\\OtpServices.cs",
+              "RelativeToolTip": "backend\\SmartBooking.API\\Services\\OtpServices.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAA8wBYAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T09:37:31.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "SmartBooking.API.csproj",
+              "DocumentMoniker": "C:\\Users\\Saba\\Source\\Repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\SmartBooking.API.csproj",
+              "RelativeDocumentMoniker": "backend\\SmartBooking.API\\SmartBooking.API.csproj",
+              "ToolTip": "C:\\Users\\Saba\\Source\\Repos\\Smart-Auditorium-Booking-and-Access-Management-System\\backend\\SmartBooking.API\\SmartBooking.API.csproj",
+              "RelativeToolTip": "backend\\SmartBooking.API\\SmartBooking.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-04T10:21:18.722Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

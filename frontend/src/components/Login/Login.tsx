@@ -6,12 +6,14 @@ import {
   Typography,
   Paper,
   Box,
-  Alert
+  Alert,
+  IconButton
 } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode';
 import './Login.css';
 
 interface JwtPayload {
@@ -29,6 +31,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showCard, setShowCard] = useState(true);
   const navigate = useNavigate();
 
   const sendCode = async () => {
@@ -68,8 +71,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
       const userType = payload.user;
 
       setIsLoggedIn(true);
-
-      onLoginSuccess(); // Notify parent that login succeeded
+      onLoginSuccess();
 
       setTimeout(() => {
         if (userType === 'admin') {
@@ -86,13 +88,27 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
     }
   };
 
+  const handleCloseCard = () => {
+    setShowCard(false);
+  };
+
   return (
     <Container maxWidth="sm" className="login-container">
-      {!isLoggedIn && (
+      {!isLoggedIn && showCard && (
         <Paper elevation={3} className="login-paper">
-          <Typography variant="h5" gutterBottom className="login-title">
-            {isEmailSent ? 'Enter the Code Sent to Your Email' : 'Enter your KIU email'}
-          </Typography>
+          {/* Header with Title and Close Button */}
+          <Box className="login-header">
+            <Typography variant="h5" className="login-title">
+              {isEmailSent
+                ? 'Enter the Code Sent to Your Email'
+                : 'Enter your KIU email'}
+            </Typography>
+            <IconButton onClick={handleCloseCard} className="close-button">
+              <CloseIcon style={{ color: 'red' }} />
+            </IconButton>
+          </Box>
+
+          {/* Input Fields and Buttons */}
           <Box className="input-container">
             {!isEmailSent ? (
               <TextField

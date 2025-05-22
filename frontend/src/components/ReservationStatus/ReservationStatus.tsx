@@ -101,29 +101,24 @@ const ReservationStatus: React.FC = () => {
         <div className="checkout-success">{message}</div>
       ) : (
         <>
-          {/* Show full details card for pending, rejected, or completed */}
+        
           <h1>Reservation Details</h1>
           <div className="status-card">
-            <div><strong>ID:</strong> {reservation.id}</div>
+            
             <div><strong>Auditorium:</strong> {reservation.auditoriumName}</div>
             <div>
               <strong>Start Time:</strong>{' '}
               {new Date(reservation.startTime).toLocaleString()}
             </div>
-            <div>
-              <strong>End Time:</strong>{' '}
-              {reservation.endTime
-                ? new Date(reservation.endTime).toLocaleString()
-                : '—'}
-            </div>
+            
             <div><strong>Status:</strong> {reservation.status}</div>
             <div>
               <strong>Student:</strong> {reservation.firstName} {reservation.lastName}
             </div>
             <div><strong>Email:</strong> {reservation.email}</div>
-            <div><strong>Phone:</strong> {reservation.phone}</div>
-            <div><strong>Student ID:</strong> {reservation.privateNumber}</div>
-            <div><strong>Signature:</strong> {reservation.signature}</div>
+            
+            
+            
           </div>
         </>
       )}

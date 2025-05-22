@@ -21,6 +21,7 @@
     height: 40px;
     width: auto;
     margin-right: 1rem;
+    cursor: pointer;
   }
   
   .logo-text {

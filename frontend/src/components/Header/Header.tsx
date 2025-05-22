@@ -1,37 +1,32 @@
+// src/components/Header/Header.tsx
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Avatar, Stack } from '@mui/material';
 import './Header.css';
 import logo from '../../assets/kiu-logo.png';
 import Login from '../Login/Login';
 import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode'; // Named import, NOT default
+import { jwtDecode } from 'jwt-decode';
 
 interface JwtPayload {
   email: string;
   user?: 'admin' | 'student';
 }
 
-// Avatar helper functions
 function stringToColor(string: string) {
   let hash = 0;
-  let i;
-
-  for (i = 0; i < string.length; i += 1) {
+  for (let i = 0; i < string.length; i++) {
     hash = string.charCodeAt(i) + ((hash << 5) - hash);
   }
-
   let color = '#';
-
-  for (i = 0; i < 3; i += 1) {
+  for (let i = 0; i < 3; i++) {
     const value = (hash >> (i * 8)) & 0xff;
     color += `00${value.toString(16)}`.slice(-2);
   }
-
   return color;
 }
 
 function stringAvatar(name: string) {
-  const nameParts = name.split(' ');
+  const [first, last] = name.split(' ');
   return {
     sx: {
       bgcolor: stringToColor(name),
@@ -40,11 +35,11 @@ function stringAvatar(name: string) {
       fontSize: '1rem',
       marginRight: '0.5rem',
     },
-    children: `${nameParts[0]?.[0] ?? ''}${nameParts[1]?.[0] ?? ''}`,
+    children: `${first?.[0] ?? ''}${last?.[0] ?? ''}`,
   };
 }
 
-const Header = () => {
+const Header: React.FC = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState<string>('');
@@ -54,26 +49,21 @@ const Header = () => {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        const payload = jwtDecode(token) as JwtPayload;
+        const payload = jwtDecode<JwtPayload>(token);
         if (payload.email) {
           setEmail(payload.email);
-          console.log(payload.email)
           setIsLoggedIn(true);
         }
-      } catch (e) {
-        console.error('Invalid token', e);
+      } catch {
         setIsLoggedIn(false);
       }
-    } else {
-      setIsLoggedIn(false);
     }
   }, []);
 
-  // Called by Login component when login succeeds
   const handleLoginSuccess = () => {
     const token = localStorage.getItem('token');
     if (token) {
-      const payload = jwtDecode(token) as JwtPayload;
+      const payload = jwtDecode<JwtPayload>(token);
       if (payload.email) {
         setEmail(payload.email);
       }
@@ -97,14 +87,17 @@ const Header = () => {
   return (
     <>
       <div className="custom-header">
-        <Box className="logo-container">
+        <Box
+          className="logo-container"
+          onClick={() => navigate('/')}
+        >
           <img src={logo} alt="KIU Logo" className="kiu-logo" />
           <Typography variant="h5" className="logo-text">
             KIU - Smart Booking System
           </Typography>
         </Box>
 
-        <Box className="nav-links" style={{ display: 'flex', alignItems: 'center' }}>
+        <Box className="nav-links">
           {isLoggedIn && (
             <Stack direction="row" alignItems="center" spacing={1} mr={2}>
               <Avatar {...stringAvatar(email)} />
@@ -123,7 +116,9 @@ const Header = () => {
         </Box>
       </div>
 
-      {showLogin && !isLoggedIn && <Login onLoginSuccess={handleLoginSuccess} />}
+      {showLogin && !isLoggedIn && (
+        <Login onLoginSuccess={handleLoginSuccess} />
+      )}
     </>
   );
 };
