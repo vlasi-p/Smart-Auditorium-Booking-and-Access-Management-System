@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="custom-footer">
       <p className="footer-text">
-        © {new Date().getFullYear()} Kutaisi International University - Smart Booking System
+        © {new Date().getFullYear()} Kutaisi International University - Auditorium Smart Booking System
       </p>
     </footer>
   );

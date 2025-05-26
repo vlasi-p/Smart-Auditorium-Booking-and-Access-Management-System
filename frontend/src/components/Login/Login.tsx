@@ -95,13 +95,13 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   return (
     <Container maxWidth="sm" className="login-container">
       {!isLoggedIn && showCard && (
-        <Paper elevation={3} className="login-paper">
-          {/* Header with Title and Close Button */}
+        <Paper elevation={24} className="login-paper">
+          
           <Box className="login-header">
-            <Typography variant="h5" className="login-title">
+            <Typography variant="h4" className="login-title">
               {isEmailSent
                 ? 'Enter the Code Sent to Your Email'
-                : 'Enter your KIU email'}
+                : 'Enter your KIU Email'}
             </Typography>
             <IconButton onClick={handleCloseCard} className="close-button">
               <CloseIcon style={{ color: 'red' }} />

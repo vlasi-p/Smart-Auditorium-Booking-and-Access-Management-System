@@ -27,7 +27,7 @@ const ReservationStatus: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [checkingOut, setCheckingOut] = useState(false);
-  const [message, setMessage] = useState(''); // unified message for approval or checkout
+  const [message, setMessage] = useState(''); 
 
   const fetchReservation = async () => {
     try {
@@ -41,14 +41,14 @@ const ReservationStatus: React.FC = () => {
     }
   };
 
-  // initial + polling
+  
   useEffect(() => {
     fetchReservation();
     const iv = setInterval(fetchReservation, POLL_INTERVAL);
     return () => clearInterval(iv);
   }, [id]);
 
-  // watch for rejection
+  
   useEffect(() => {
     if (reservation?.status === 'rejected') {
       setMessage('Your reservation has been rejected by the administrator.');

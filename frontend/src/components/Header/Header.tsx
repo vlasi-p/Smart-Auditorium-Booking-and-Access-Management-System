@@ -93,7 +93,7 @@ const Header: React.FC = () => {
         >
           <img src={logo} alt="KIU Logo" className="kiu-logo" />
           <Typography variant="h5" className="logo-text">
-            KIU - Smart Booking System
+            KIU - Auditorium Smart Booking System
           </Typography>
         </Box>
 
