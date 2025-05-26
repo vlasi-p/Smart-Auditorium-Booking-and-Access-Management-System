@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { ChevronDown, ChevronUp, Circle } from 'lucide-react';
+import { ChevronDown, ChevronUp, Circle, Clock, Archive } from 'lucide-react';
 import './Dashboard.css';
 
 // Type definitions
@@ -22,10 +21,11 @@ interface Building {
   reservations: Reservation[];
 }
 
-
 export default function ReservationDashboard() {
   const [buildings, setBuildings] = useState<Building[]>([]);
+  const [historyBuildings, setHistoryBuildings] = useState<Building[]>([]);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const [activeTab, setActiveTab] = useState<'active' | 'history'>('active');
 
   // Function to refresh data after status updates
   const triggerRefresh = () => {
@@ -35,15 +35,29 @@ export default function ReservationDashboard() {
   useEffect(() => {
     async function fetchReservations() {
       try {
-        const response = await axios.get<Reservation[]>('https://localhost:5001/admin/all-reservations');
+        // Replace this with your actual API call
+        const response = await fetch('https://localhost:5001/admin/all-reservations');
+        const data = await response.json();
+        
+        
         const grouped: { [key: string]: Reservation[] } = {};
+        const historyGrouped: { [key: string]: Reservation[] } = {};
 
-        for (const res of response.data) {
+        for (const res of data) {
           const buildingKey = res.auditoriumName.charAt(0); // assumes Auditorium E1, F2, etc.
-          if (!grouped[buildingKey]) {
-            grouped[buildingKey] = [];
+          
+          // Separate active and history reservations
+          if (res.status === 'pending' || res.status === 'approved') {
+            if (!grouped[buildingKey]) {
+              grouped[buildingKey] = [];
+            }
+            grouped[buildingKey].push(res);
+          } else if (res.status === 'completed' || res.status === 'rejected') {
+            if (!historyGrouped[buildingKey]) {
+              historyGrouped[buildingKey] = [];
+            }
+            historyGrouped[buildingKey].push(res);
           }
-          grouped[buildingKey].push(res);
         }
 
         const colorPalette: { [key: string]: string[] } = {
@@ -52,13 +66,22 @@ export default function ReservationDashboard() {
           G: ['#f57c00', '#4fc3f7']
         };
 
+        // Active reservations
         const result: Building[] = Object.keys(grouped).map((key) => ({
           name: key,
           colors: colorPalette[key] || ['#ccc', '#999'],
           reservations: grouped[key]
         }));
 
+        // History reservations
+        const historyResult: Building[] = Object.keys(historyGrouped).map((key) => ({
+          name: key,
+          colors: colorPalette[key] || ['#ccc', '#999'],
+          reservations: historyGrouped[key]
+        }));
+
         setBuildings(result);
+        setHistoryBuildings(historyResult);
       } catch (error) {
         console.error('Error fetching reservations:', error);
       }
@@ -67,6 +90,9 @@ export default function ReservationDashboard() {
     fetchReservations();
   }, [refreshTrigger]); // Refetch when refreshTrigger changes
 
+  const activeCount = buildings.reduce((sum, b) => sum + b.reservations.length, 0);
+  const historyCount = historyBuildings.reduce((sum, b) => sum + b.reservations.length, 0);
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-header">
@@ -74,23 +100,72 @@ export default function ReservationDashboard() {
         <p className="dashboard-subtitle">Manage auditorium reservations across campus buildings</p>
       </div>
 
-      <div className="table-container">
-        <table className="table-full">
-          <tbody>
-            {buildings.map((b) => (
-              <BuildingRow key={b.name} building={b} onStatusUpdate={triggerRefresh} />
-            ))}
-          </tbody>
-        </table>
+      {/* Tab Navigation */}
+      <div className="tab-navigation">
+        <button
+          className={`tab-button ${activeTab === 'active' ? 'tab-active' : ''}`}
+          onClick={() => setActiveTab('active')}
+        >
+          <Clock size={16} />
+          Active Reservations
+          {activeCount > 0 && <span className="tab-count">{activeCount}</span>}
+        </button>
+        <button
+          className={`tab-button ${activeTab === 'history' ? 'tab-active' : ''}`}
+          onClick={() => setActiveTab('history')}
+        >
+          <Archive size={16} />
+          History
+          {historyCount > 0 && <span className="tab-count">{historyCount}</span>}
+        </button>
       </div>
 
-      <div className="table-footer">
-        Showing {buildings.reduce((sum, b) => sum + b.reservations.length, 0)} reservations across {buildings.length} buildings
-      </div>
+      {/* Active Reservations Tab */}
+      {activeTab === 'active' && (
+        <>
+          <div className="table-container">
+            <table className="table-full">
+              <tbody>
+                {buildings.map((b) => (
+                  <BuildingRow key={b.name} building={b} onStatusUpdate={triggerRefresh} showActions={true} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="table-footer">
+            Showing {activeCount} active reservations across {buildings.length} buildings
+          </div>
+        </>
+      )}
+
+      {/* History Tab */}
+      {activeTab === 'history' && (
+        <>
+          <div className="history-info">
+            <p className="history-note">
+              Completed reservations are kept for 30 days. Rejected reservations are automatically deleted after 24 hours.
+            </p>
+          </div>
+
+          <div className="table-container">
+            <table className="table-full">
+              <tbody>
+                {historyBuildings.map((b) => (
+                  <BuildingRow key={b.name} building={b} onStatusUpdate={triggerRefresh} showActions={false} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="table-footer">
+            Showing {historyCount} historical reservations across {historyBuildings.length} buildings
+          </div>
+        </>
+      )}
     </div>
   );
 } 
-
 
 // Status badge component
 function StatusBadge({ status }: { status: string }) {
@@ -102,6 +177,9 @@ function StatusBadge({ status }: { status: string }) {
       break;
     case 'rejected':
       statusClass = 'status-rejected';
+      break;
+    case 'completed':
+      statusClass = 'status-completed';
       break;
     default:
       statusClass = 'status-pending';
@@ -118,14 +196,18 @@ function StatusBadge({ status }: { status: string }) {
 function ReservationRow({ 
   res, 
   onUpdate, 
-  onStatusUpdate 
+  onStatusUpdate,
+  showActions = true
 }: { 
   res: Reservation; 
   onUpdate: (updatedRes: Reservation) => void;
   onStatusUpdate: () => void;
+  showActions?: boolean;
 }) {
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: string | null) => {
+    if (!dateString) return '...';
     const date = new Date(dateString);
+    if (isNaN(date.getTime())) return '...';
     return date.toLocaleString('en-US', {
       month: 'short',
       day: 'numeric',
@@ -136,16 +218,23 @@ function ReservationRow({
 
   const handleDecision = async (decision: 'Accepted' | 'Rejected') => {
     try {
-      // Send the decision to the server
-      await axios.post('https://localhost:5001/admin/decide-reservation', {
-        ReservationId: Number(res.id),
-        Decision: decision === 'Accepted' ? 'approve' : 'reject'
+      // Replace with your actual API call
+      const response = await fetch('https://localhost:5001/admin/decide-reservation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ReservationId: Number(res.id),
+          Decision: decision === 'Accepted' ? 'approve' : 'reject'
+        })
       });
-  
+      
+      // Mock implementation for demonstration
+      console.log(`${decision} reservation ${res.id}`);
+      
       // Update parent component state
       const updated: Reservation = {
         ...res,
-        status: decision
+        status: decision.toLowerCase()
       };
       onUpdate(updated);
       
@@ -175,24 +264,26 @@ function ReservationRow({
         <span className="security-code">{res.securityCode}</span>
       </td>
       <td className="td-cell">{res.email}</td>
-      <td className="td-cell">
-        <div className="button-container">
-          <button 
-            className={`button ${isPending ? 'button-accept' : 'button-disabled'}`}
-            onClick={() => handleDecision('Accepted')}
-            disabled={!isPending}
-          >
-            Accept
-          </button>
-          <button 
-            className={`button ${isPending ? 'button-reject' : 'button-disabled'}`}
-            onClick={() => handleDecision('Rejected')}
-            disabled={!isPending}
-          >
-            Reject
-          </button>
-        </div>
-      </td>
+      {showActions && (
+        <td className="td-cell">
+          <div className="button-container">
+            <button 
+              className={`button ${isPending ? 'button-accept' : 'button-disabled'}`}
+              onClick={() => handleDecision('Accepted')}
+              disabled={!isPending}
+            >
+              Accept
+            </button>
+            <button 
+              className={`button ${isPending ? 'button-reject' : 'button-disabled'}`}
+              onClick={() => handleDecision('Rejected')}
+              disabled={!isPending}
+            >
+              Reject
+            </button>
+          </div>
+        </td>
+      )}
     </tr>
   );
 }
@@ -200,10 +291,12 @@ function ReservationRow({
 // Building row component
 function BuildingRow({ 
   building, 
-  onStatusUpdate 
+  onStatusUpdate,
+  showActions = true
 }: { 
   building: Building; 
   onStatusUpdate: () => void;
+  showActions?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [reservations, setReservations] = useState(building.reservations);
@@ -219,12 +312,14 @@ function BuildingRow({
     );
   };
 
-  const pendingCount = reservations.filter(r => r.status === 'Pending').length;
+  const pendingCount = reservations.filter(r => r.status === 'pending').length;
+  const completedCount = reservations.filter(r => r.status === 'completed').length;
+  const rejectedCount = reservations.filter(r => r.status === 'rejected').length;
 
   return (
     <>
       <tr className="building-row">
-        <td colSpan={10} className="p-0">
+        <td colSpan={showActions ? 10 : 9} className="p-0">
           <button 
             onClick={() => setOpen(!open)}
             className="building-button"
@@ -236,10 +331,24 @@ function BuildingRow({
             </div>
             <div className="building-name-container">
               <h3 className="building-name">Building {building.name}</h3>
-              {pendingCount > 0 && (
+              {showActions && pendingCount > 0 && (
                 <span className="pending-badge">
                   {pendingCount} pending
                 </span>
+              )}
+              {!showActions && (completedCount > 0 || rejectedCount > 0) && (
+                <div className="history-badges">
+                  {completedCount > 0 && (
+                    <span className="history-badge completed-badge">
+                      {completedCount} completed
+                    </span>
+                  )}
+                  {rejectedCount > 0 && (
+                    <span className="history-badge rejected-badge">
+                      {rejectedCount} rejected
+                    </span>
+                  )}
+                </div>
               )}
             </div>
             {open ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -258,14 +367,15 @@ function BuildingRow({
             <th className="th-cell">Status</th>
             <th className="th-cell">Security Code</th>
             <th className="th-cell">Email</th>
-            <th className="th-cell">Actions</th>
+            {showActions && <th className="th-cell">Actions</th>}
           </tr>
           {reservations.map((res) => (
             <ReservationRow 
               key={res.id} 
               res={res} 
               onUpdate={updateReservation} 
-              onStatusUpdate={onStatusUpdate} 
+              onStatusUpdate={onStatusUpdate}
+              showActions={showActions}
             />
           ))}
         </>

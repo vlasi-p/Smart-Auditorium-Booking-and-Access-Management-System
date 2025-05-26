@@ -6,6 +6,7 @@ Thumbs.db
 # Ignore environment variables and secrets
 .env
 *.env.*
+appsettings.json
 
 # --------------Backend---------------
 # .NET build files
