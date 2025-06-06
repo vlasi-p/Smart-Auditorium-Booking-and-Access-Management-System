@@ -1,69 +1,479 @@
+/* Enhanced Custom Header Styles with Mobile Responsiveness */
+
 .custom-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #071727;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #0a1929 0%, #0d2136 50%, #1565c0 100%);
+  padding: 1.25rem 2.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(1.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scroll effect - add this class with JavaScript when scrolled */
+.custom-header.scrolled {
+  padding: 0.75rem 2.5rem;
+  background: linear-gradient(135deg, rgba(10, 25, 41, 0.95) 0%, rgba(13, 33, 54, 0.95) 50%, rgba(21, 101, 192, 0.95) 100%);
+  backdrop-filter: blur(25px) saturate(1.5);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.logo-container:hover {
+  transform: translateY(-3px);
+}
+
+.kiu-logo {
+  height: 52px;
+  width: auto;
+  margin-right: 1.25rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: 
+    drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))
+    drop-shadow(0 0 20px rgba(21, 101, 192, 0.2));
+}
+
+.kiu-logo:hover {
+  transform: scale(1.08) rotate(-2deg);
+  filter: 
+    drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4))
+    drop-shadow(0 0 30px rgba(21, 101, 192, 0.4));
+}
+
+.logo-text {
+  color: #ffffff;
+  font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 800;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-text:hover {
+  transform: translateX(4px);
+  text-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(21, 101, 192, 0.3);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Enhanced Login Button Styles */
+.login-button, 
+.custom-header-login-button {
+  background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 70%, #8e0000 100%);
+  color: #ffffff;
+  font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 6px 20px rgba(211, 47, 47, 0.4),
+    0 3px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-button::before, 
+.custom-header-login-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent
+  );
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-button::after,
+.custom-header-login-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+
+.login-button:hover, 
+.custom-header-login-button:hover {
+  background: linear-gradient(135deg, #e53935 0%, #c62828 70%, #b71c1c 100%);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 12px 32px rgba(211, 47, 47, 0.5),
+    0 6px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.login-button:hover::before, 
+.custom-header-login-button:hover::before {
+  left: 100%;
+}
+
+.login-button:active, 
+.custom-header-login-button:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 
+    0 4px 12px rgba(211, 47, 47, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease;
+}
+
+/* Enhanced larger button variant */
+.custom-header-login-button {
+  font-size: 1.3rem;
+  padding: 18px 36px;
+  border-radius: 16px;
+  font-weight: 800;
+  min-width: 140px;
+}
+
+/* Mobile Navigation Toggle */
+.mobile-nav-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.mobile-nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.mobile-nav-toggle span {
+  width: 24px;
+  height: 3px;
+  background: #ffffff;
+  margin: 3px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+}
+
+.mobile-nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(10, 25, 41, 0.98) 0%, rgba(13, 33, 54, 0.98) 100%);
+  backdrop-filter: blur(25px);
+  padding: 2rem;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu .login-button {
+  width: 100%;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .custom-header {
     padding: 1rem 2rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 10;
   }
   
-  .logo-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .kiu-logo {
-    height: 50px;
-    width: auto;
-    margin-right: 1rem;
-    cursor: pointer;
-  }
-  
-  .logo-text {
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
+  .custom-header.scrolled {
+    padding: 0.75rem 2rem;
   }
   
   .nav-links {
-    display: flex;
-    align-items: center;
+    gap: 1.5rem;
   }
-  .login-button {
-    background-color: red;
-    font-size: 1.1rem;
-    padding: 0.8rem 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .custom-header {
+    padding: 1rem 1.5rem;
   }
   
-  .login-button:hover {
-    background-color: #cc0000; 
+  .custom-header.scrolled {
+    padding: 0.75rem 1.5rem;
   }
+  
+  .kiu-logo {
+    height: 44px;
+    margin-right: 1rem;
+  }
+  
+  .logo-text {
+    font-size: 1.5rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .mobile-nav-toggle {
+    display: none;
+  }
+  
+  .login-button,
   .custom-header-login-button {
-    background-color: #d32f2f;
-    color: white;
-    font-size: 1.5rem;          
-    padding: 16px 36px;        
-    border: none;
-    border-radius: 12px;        
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+    font-size: 0.9rem;
+    padding: 10px 18px;
+    border-radius: 10px;
+    min-width: 100px;
   }
   
+  .custom-header-login-button {
+    font-size: 1rem;
+    padding: 12px 22px;
+    border-radius: 12px;
+    min-width: 110px;
+  }
+}
+
+@media (max-width: 640px) {
+  .custom-header {
+    padding: 0.875rem 1rem;
+  }
+  
+  .custom-header.scrolled {
+    padding: 0.625rem 1rem;
+  }
+  
+  .kiu-logo {
+    height: 40px;
+    margin-right: 0.75rem;
+  }
+  
+  .logo-text {
+    font-size: 1.25rem;
+  }
+  
+  .nav-links {
+    gap: 0.75rem;
+  }
+  
+  .mobile-nav-toggle {
+    display: none;
+  }
+  
+  .login-button,
+  .custom-header-login-button {
+    font-size: 0.85rem;
+    padding: 8px 14px;
+    letter-spacing: 0.4px;
+    min-width: 85px;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-header {
+    padding: 0.75rem 0.875rem;
+  }
+  
+  .custom-header.scrolled {
+    padding: 0.5rem 0.875rem;
+  }
+  
+  .logo-text {
+    font-size: 0.5rem;
+  }
+  
+  .kiu-logo {
+    margin-right: 0.5rem;
+    height: 36px;
+  }
+  
+  .nav-links {
+    gap: 0.5rem;
+  }
+  
+  .mobile-nav-toggle {
+    display: none;
+  }
+  
+  .login-button,
+  .custom-header-login-button {
+    font-size: 0.8rem;
+    padding: 7px 12px;
+    min-width: 70px;
+    letter-spacing: 0.3px;
+  }
+}
+
+@media (max-width: 360px) {
+  .custom-header {
+    padding: 0.625rem 0.75rem;
+  }
+  
+  .kiu-logo {
+    height: 32px;
+    margin-right: 0.25rem;
+  }
+  
+  .logo-text {
+    font-size: 0.9rem;
+  }
+  
+  .nav-links {
+    gap: 0.25rem;
+  }
+  
+  .login-button,
+  .custom-header-login-button {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    letter-spacing: 0.2px;
+    min-width: 60px;
+    border-radius: 8px;
+  }
+}
+
+/* Hover effects for touch devices */
+@media (hover: none) {
+  .login-button:hover,
   .custom-header-login-button:hover {
-    background-color: #b71c1c;
-    transform: scale(1.08);     
+    transform: none;
   }
   
-  .custom-header-login-button:active {
-    transform: scale(0.96);     
+  .kiu-logo:hover {
+    transform: none;
   }
   
+  .logo-container:hover {
+    transform: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .custom-header {
+    background: linear-gradient(135deg, #000814 0%, #001d3d 50%, #003566 100%);
+  }
+  
+  .custom-header.scrolled {
+    background: linear-gradient(135deg, rgba(0, 8, 20, 0.95) 0%, rgba(0, 29, 61, 0.95) 50%, rgba(0, 53, 102, 0.95) 100%);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .custom-header {
+    border-bottom: 2px solid #ffffff;
+  }
+  
+  .login-button,
+  .custom-header-login-button {
+    border: 2px solid #ffffff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .custom-header,
+  .logo-container,
+  .kiu-logo,
+  .logo-text,
+  .login-button,
+  .custom-header-login-button,
+  .mobile-nav-toggle,
+  .mobile-menu {
+    transition: none;
+  }
+  
+  .login-button::before,
+  .custom-header-login-button::before {
+    display: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .custom-header {
+    position: static;
+    background: none;
+    box-shadow: none;
+    border-bottom: 1px solid #000;
+    color: #000;
+  }
+  
+  .login-button,
+  .custom-header-login-button,
+  .mobile-nav-toggle {
+    display: none;
+  }
+}

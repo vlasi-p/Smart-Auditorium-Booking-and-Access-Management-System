@@ -66,6 +66,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
       });
       const token: string = resp.data.token;
       localStorage.setItem('token', token);
+      console.log(localStorage.getItem("token"))
 
       const payload = jwtDecode<JwtPayload>(token);
       const userType = payload.user;

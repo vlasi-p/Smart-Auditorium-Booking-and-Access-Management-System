@@ -1,182 +1,534 @@
-/* Container */
+/* Modern CSS Variables for consistent theming */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --warning-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --shadow-light: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --shadow-heavy: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  --border-radius: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Container with modern background */
 .auditoriums-page {
-  padding: 60px;
-  background-color: #f4f4f4;
-  height: 100%;
+  padding: 30px 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 40%;
   margin: 0;
   box-sizing: border-box;
   width: 100%;
+  position: relative;
+ margin-top: 100px;
 }
 
+/* Animated background pattern */
+.auditoriums-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: backgroundMove 20s ease-in-out infinite alternate;
+  pointer-events: none;
+}
 
+@keyframes backgroundMove {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-10px, -10px) scale(1.05); }
+}
 
-/* Group heading */
+/* Group section styling */
+.aud-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* Group heading with glassmorphism effect */
 .group-title {
-  text-align: center;      /* center the titles */
-  font-weight: bold;
-  margin-top: 2rem;
-  
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.3rem;
+  margin: 0 0 20px 0;
+  color: white;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: inline-block;
+  width: 100%;
 }
 
-/* Horizontal row of cards */
+.group-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+  animation: titleUnderline 0.8s ease-out;
+}
+
+@keyframes titleUnderline {
+  0% { width: 0; }
+  100% { width: 80px; }
+}
+
+/* Horizontal row with enhanced layout */
 .auditorium-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center; /* center auditoriums horizontally */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  
+  justify-items: center;
+  padding: 10px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-light);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Individual card */
+/* Animated background for each row */
+.auditorium-row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Enhanced auditorium cards */
 .auditorium-card {
-  flex: 0 0 220px;
+  width: 200px;
+  height: 280px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.auditorium-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: var(--transition);
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
-/* Inner panel style */
+.auditorium-card:hover {
+ 
+  filter: brightness(1.1);
+}
+
+/* Door panel with 3D effect */
 .door-panel {
-  background: linear-gradient(to bottom, #140957, #130853);
-  border: 2px solid #5e4028;
-  border-radius: 12px;
-  height: 250px;
+  background: linear-gradient(145deg, #1a1a2e, #16213e, #0f3460);
+  border: 3px solid #8b5a2b;
+  border-radius: var(--border-radius);
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    var(--shadow-heavy),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
 }
+
+/* Door handle effect */
+.door-panel::before {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 40px;
+  background: linear-gradient(145deg, #d4af37, #b8941f);
+  border-radius: 6px;
+  box-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Door frame details */
+.door-panel::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 2px solid rgba(139, 90, 43, 0.6);
+  border-radius: calc(var(--border-radius) - 8px);
+  pointer-events: none;
+}
+
+.auditorium-card:hover .door-panel {
+  background: linear-gradient(145deg, #1e1e3a, #1a2548, #12396e);
+  border-color: #a0642f;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Auditorium name styling */
 .aud-name {
   color: #fff;
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-}
-
-/* Loading & error */
-.loading, .error {
   font-size: 1.5rem;
-  margin-top: 100px;
-  color: #555;
+  font-weight: 600;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.3);
+  letter-spacing: 1px;
   text-align: center;
+  z-index: 2;
+  position: relative;
+  transition: var(--transition);
 }
 
-/* Reservation Form Styles */
-.reservation-form-container {
-  max-width: 600px;
-  margin: 80px auto;
-  padding: 30px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+.auditorium-card:hover .aud-name {
+  transform: scale(1.1);
+  text-shadow: 
+    2px 2px 6px rgba(0, 0, 0, 0.9),
+    0 0 15px rgba(255, 255, 255, 0.5);
 }
+
+/* Loading & error states with better styling */
+.loading, .error {
+  font-size: 2rem;
+  margin-top: 100px;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--glass-border);
+  max-width: 500px;
+  margin: 100px auto;
+}
+
+.loading::after {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 15px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Enhanced Reservation Form */
+.reservation-form-container {
+  max-width: 500px;
+  margin: 100px auto;
+  max-height: 800px;
+  padding: 15px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-heavy);
+  position: relative;
+  overflow: hidden;
+}
+
+.reservation-form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-gradient);
+}
+
+.reservation-form-container h2 {
+  color: rgb(0, 9, 57);
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 .reservation-form .form-row {
-  margin-bottom: 16px;
+  margin-bottom: 15px;
   text-align: left;
 }
+
 .reservation-form .form-row label {
   display: block;
-  margin-bottom: 4px;
-  font-weight: 600;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: rgb(0, 9, 57);
+  font-size: 1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
+
 .reservation-form .form-row input {
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  transition: border-color 0.2s ease;
+  padding: 7px 9px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: rgb(0, 9, 57);
+  transition: var(--transition);
+  box-sizing: border-box;
 }
+
+.reservation-form .form-row input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .reservation-form .form-row input:focus {
-  border-color: #ff3d00;
+  border-color: #4facfe;
   outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.3);
+  transform: translateY(-2px);
 }
+
 .form-error {
-  margin-top: 12px;
-  color: #d32f2f;
+  margin-top: 10px;
+  color: #ff6b6b;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 107, 107, 0.1);
+  padding: 8px;
+  border-radius: 8px;
+  border-left: 4px solid #ff6b6b;
 }
+
 .form-actions {
-  margin-top: 24px;
-  text-align: right;
-}
-.btn-cancel, .btn-submit {
-  padding: 10px 24px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-.btn-cancel {
-  background: #ccc;
-  margin-right: 12px;
-}
-.btn-cancel:hover {
-  transform: translateY(-2px);
-}
-.btn-submit {
-  background: #ff3d00;
-  color: #fff;
-}
-.btn-submit:hover {
-  transform: translateY(-2px);
-}
-
-.aud-group:nth-of-type(1) .auditorium-row {
-  background: linear-gradient(
-    to right,
-    rgba(255,0,0,0.5) 50%,
-    rgba(0,0,255,0.5) 50%
-  );
-  padding: 1rem;
-  border-radius: 8px;
-}
-
-/* 2nd group: half green / half yellow */
-.aud-group:nth-of-type(2) .auditorium-row {
-  background: linear-gradient(
-    to right,
-    rgba(20, 206, 20, 0.5) 50%,
-    rgba(255,255,0,0.5) 50%
-  );
-  padding: 1rem;
-  border-radius: 8px;
-}
-
-/* 3rd group: half orange / half purple */
-.aud-group:nth-of-type(3) .auditorium-row {
-  background: linear-gradient(
-    to right,
-    rgba(255, 157, 0, 0.905) 50%,
-    rgba(94, 175, 237, 0.25) 50%
-  );
-  padding: 1rem;
-  border-radius: 8px;
-}
-.active-reservation {
-  max-width: 600px;
-  margin: 80px auto;
-  padding: 24px;
-  background: #ffe0b2;
-  border: 2px solid #ff9800;
-  border-radius: 8px;
+  margin-top: 20px;
   text-align: center;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
-.active-reservation h2 {
-  margin-bottom: 16px;
-}
-.active-reservation button {
-  margin-top: 12px;
-  padding: 8px 20px;
-  background: #ff9800;
-  color: #fff;
+
+.btn-cancel, .btn-submit {
+  padding: 8px 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  min-width: 150px;
 }
+
+.btn-cancel {
+  background-color: #e60c0c;
+  color: white;
+  box-shadow: 0 4px 15px rgba(108, 117, 125, 0.4);
+}
+
+.btn-cancel:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(108, 117, 125, 0.6);
+  background: linear-gradient(145deg, #5a6268, #495057);
+}
+
+.btn-submit {
+  background: #12396e;
+  color: white;
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+}
+
+.btn-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+}
+
+/* Button ripple effect */
+.btn-cancel::before, .btn-submit::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: width 0.6s, height 0.6s, top 0.6s, left 0.6s;
+  transform: translate(-50%, -50%);
+}
+
+.btn-cancel:active::before, .btn-submit:active::before {
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+}
+
+/* Group-specific enhanced backgrounds */
+.aud-group:nth-of-type(1) .auditorium-row {
+  background: linear-gradient(135deg, rgba(255, 99, 132, 0.3), rgba(54, 162, 235, 0.3));
+  position: relative;
+}
+
+.aud-group:nth-of-type(2) .auditorium-row {
+  background: linear-gradient(135deg, rgba(75, 192, 192, 0.3), rgba(255, 205, 86, 0.3));
+}
+
+.aud-group:nth-of-type(3) .auditorium-row {
+  background: linear-gradient(135deg, rgba(255, 159, 64, 0.3), rgba(153, 102, 255, 0.3));
+}
+
+/* Enhanced active reservation */
+.active-reservation {
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 152, 0, 0.2));
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 193, 7, 0.4);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: var(--shadow-heavy);
+  position: relative;
+  overflow: hidden;
+}
+
+.active-reservation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--warning-gradient);
+}
+
+.active-reservation h2 {
+  margin-bottom: 30px;
+  color: white;
+  font-size: 2.2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.active-reservation p {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.active-reservation button {
+  margin-top: 25px;
+  padding: 16px 32px;
+  background: var(--warning-gradient);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+}
+
+.active-reservation button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.6);
+}
+
 .active-reservation button:disabled {
   opacity: 0.6;
-  cursor: default;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+}
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+  .auditoriums-page {
+    padding: 20px 15px;
+  }
+  
+  .group-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .auditorium-row {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 25px 15px;
+  }
+  
+  .auditorium-card {
+    width: 100%;
+    max-width: 200px;
+    height: 180px;
+  }
+  
+  .reservation-form-container {
+    margin: 40px 15px;
+    padding: 30px 25px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-cancel, .btn-submit {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for better accessibility */
+.auditorium-card:focus {
+  outline: 3px solid rgba(79, 172, 254, 0.8);
+  outline-offset: 4px;
+}
+
+.btn-cancel:focus, .btn-submit:focus {
+  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
 }

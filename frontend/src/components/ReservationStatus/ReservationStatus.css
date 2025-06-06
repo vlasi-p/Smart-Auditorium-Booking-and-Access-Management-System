@@ -1,32 +1,38 @@
 .status-container {
+  position: relative;
   max-width: 600px;
   margin: 80px auto;
-  padding: 20px;
-  background: #fff;
+  padding: 30px 24px;
+  margin-top: 150px;
+  background: #f9d4d4;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
   font-family: 'Segoe UI', sans-serif;
+  transition: all 0.3s ease-in-out;
 }
 
 .status-container h1 {
   text-align: center;
   margin-bottom: 24px;
-  color: #333;
+  color: #222;
+  font-size: 1.8rem;
 }
 
 .status-card {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 12px;
-  padding: 16px;
-  background: #fafafa;
-  border-radius: 8px;
+  row-gap: 14px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-left: 6px solid #007bff;
+  border-radius: 12px;
   margin-bottom: 24px;
 }
 
 .status-card > div {
   font-size: 1rem;
-  color: #444;
+  color: #0d0030;
+  line-height: 1.4;
 }
 
 .finish-button {
@@ -52,11 +58,13 @@
   cursor: not-allowed;
 }
 
-.checkout-success {
+.checkout-success,
+.approval-message {
   text-align: center;
-  margin-top: 16px;
+  margin: 16px auto;
   color: #28a745;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .status-loading,
@@ -65,4 +73,32 @@
   margin: 80px;
   font-size: 1.2rem;
   color: #555;
+}
+
+/* Red reminder text */
+.important-reminder {
+  color: red;
+  font-weight: bold;
+  margin: 20px 0 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  background-color: #f8adad;
+}
+
+/* X button */
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-button:hover {
+  color: #000;
 }

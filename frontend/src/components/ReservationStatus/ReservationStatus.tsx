@@ -17,7 +17,7 @@ interface Reservation {
   signature: string;
 }
 
-const POLL_INTERVAL = 10_000; // ms
+const POLL_INTERVAL = 10_000;
 
 const ReservationStatus: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -27,7 +27,7 @@ const ReservationStatus: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [checkingOut, setCheckingOut] = useState(false);
-  const [message, setMessage] = useState(''); 
+  const [message, setMessage] = useState('');
 
   const fetchReservation = async () => {
     try {
@@ -41,14 +41,12 @@ const ReservationStatus: React.FC = () => {
     }
   };
 
-  
   useEffect(() => {
     fetchReservation();
-    const iv = setInterval(fetchReservation, POLL_INTERVAL);
-    return () => clearInterval(iv);
+    const interval = setInterval(fetchReservation, POLL_INTERVAL);
+    return () => clearInterval(interval);
   }, [id]);
 
-  
   useEffect(() => {
     if (reservation?.status === 'rejected') {
       setMessage('Your reservation has been rejected by the administrator.');
@@ -56,7 +54,6 @@ const ReservationStatus: React.FC = () => {
     }
   }, [reservation, navigate]);
 
-  // Handle checkout
   const handleFinish = async () => {
     if (!reservation) return;
     setCheckingOut(true);
@@ -72,53 +69,47 @@ const ReservationStatus: React.FC = () => {
     }
   };
 
-  if (loading)   return <div className="status-loading">Loading reservation…</div>;
-  if (error)     return <div className="status-error">{error}</div>;
-  if (!reservation) return <div className="status-error">No reservation found.</div>;
+  const handleClose = () => navigate('/auditoriums');
 
-  // If approved & not yet finished — show approval message + finish button only
-  if (reservation.status === 'approved' && !message) {
-    return (
-      <div className="status-container">
-        <div className="approval-message">
-          Your reservation has been <strong>approved</strong> by the administrator.
-        </div>
-        <button
-          className="finish-button"
-          onClick={handleFinish}
-          disabled={checkingOut}
-        >
-          {checkingOut ? 'Finishing…' : 'Finish Reservation'}
-        </button>
-      </div>
-    );
-  }
+  if (loading) return <div className="status-loading">Loading reservation…</div>;
+  if (error) return <div className="status-error">{error}</div>;
+  if (!reservation) return <div className="status-error">No reservation found.</div>;
 
   return (
     <div className="status-container">
-      {/* If checkout or rejection message exists, show it and hide card */}
-      {message ? (
-        <div className="checkout-success">{message}</div>
-      ) : (
+      <button className="close-button" onClick={handleClose}>&times;</button>
+
+      {reservation.status === 'approved' && !message && (
         <>
-        
-          <h1>Reservation Details</h1>
+          <div className="approval-message">
+            Your reservation has been <strong>approved</strong> by the administrator.
+          </div>
+
+          <div className="important-reminder">
+            ⚠️ Do not forget to <strong>finish the reservation</strong> after completing your work.
+          </div>
+
+          <button
+            className="finish-button"
+            onClick={handleFinish}
+            disabled={checkingOut}
+          >
+            {checkingOut ? 'Finishing…' : 'Finish Reservation'}
+          </button>
+        </>
+      )}
+
+      {message && <div className="checkout-success">{message}</div>}
+
+      {(reservation.status !== 'approved' || message) && (
+        <>
+          <h2>Reservation Details</h2>
           <div className="status-card">
-            
             <div><strong>Auditorium:</strong> {reservation.auditoriumName}</div>
-            <div>
-              <strong>Start Time:</strong>{' '}
-              {new Date(reservation.startTime).toLocaleString()}
-            </div>
-            
+            <div><strong>Start Time:</strong> {new Date(reservation.startTime).toLocaleString()}</div>
             <div><strong>Status:</strong> {reservation.status}</div>
-            <div>
-              <strong>Student:</strong> {reservation.firstName} {reservation.lastName}
-            </div>
+            <div><strong>Student:</strong> {reservation.firstName} {reservation.lastName}</div>
             <div><strong>Email:</strong> {reservation.email}</div>
-            
-            
-            
           </div>
         </>
       )}
