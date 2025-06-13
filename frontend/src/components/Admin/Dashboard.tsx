@@ -90,6 +90,16 @@ export default function ReservationDashboard() {
     fetchReservations();
   }, [refreshTrigger]); // Refetch when refreshTrigger changes
 
+  // Auto-refresh every 2 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      triggerRefresh();
+    }, 2000); // 2000ms = 2 seconds
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
+  }, []);
+
   const activeCount = buildings.reduce((sum, b) => sum + b.reservations.length, 0);
   const historyCount = historyBuildings.reduce((sum, b) => sum + b.reservations.length, 0);
 
