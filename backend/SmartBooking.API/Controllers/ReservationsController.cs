@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartBooking.API.Data;
 using SmartBooking.API.DTOs;
@@ -21,6 +22,11 @@ namespace SmartBooking.API.Controllers
         [HttpPost("request-reservation")]
         public async Task<ActionResult<Reservation>> CreateReservationAsync([FromBody] CreateReservationDto dto)
         {
+            var georgianTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Georgian Standard Time");
+
+            // Convert incoming UTC StartTime to Georgian Time (if needed)
+            var localStartTime = TimeZoneInfo.ConvertTimeFromUtc(dto.StartTime.ToUniversalTime(), georgianTimeZone);
+
             var reservation = new Reservation
             {
                 FirstName = dto.FirstName,
@@ -28,9 +34,9 @@ namespace SmartBooking.API.Controllers
                 AuditoriumId = dto.AuditoriumId,
                 AuditoriumName = dto.AuditoriumName,
                 Email = dto.Email,
-                StartTime = dto.StartTime,
+                StartTime = localStartTime,
                 Status = "pending",
-                SecurityCode = GenerateSecurityCode()
+                SecurityCode = GenerateSecurityCode(),
             };
 
             _context.Reservations.Add(reservation);
@@ -38,6 +44,7 @@ namespace SmartBooking.API.Controllers
 
             return CreatedAtAction(nameof(GetReservationById), new { id = reservation.Id }, reservation);
         }
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Reservation>> GetReservationById(int id)
@@ -52,12 +59,13 @@ namespace SmartBooking.API.Controllers
         public async Task<ActionResult<Reservation[]>> GetByEmail(string email)
         {
             var reservations = await _context.Reservations
-                .Where(r => r.Email == email)
+                .Where(r => r.Email == email && r.Status == "approved")
                 .OrderByDescending(r => r.StartTime)
                 .ToArrayAsync();
 
             return Ok(reservations);
         }
+
 
         private string GenerateSecurityCode()
         {

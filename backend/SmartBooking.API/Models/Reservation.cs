@@ -15,7 +15,7 @@
         public string? SecurityCode { get; set; }
         
         // New fields for cleanup tracking
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? RejectedAt { get; set; }
         public DateTime? CompletedAt { get; set; }
         

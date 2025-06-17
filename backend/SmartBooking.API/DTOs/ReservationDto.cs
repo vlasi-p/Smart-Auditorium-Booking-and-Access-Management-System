@@ -30,8 +30,6 @@
         public string Signature { get; set; } = default!;
 
         [Required]
-        public DateTime StartTime { get; set; } = DateTime.Now;
+        public DateTime StartTime { get; set; } 
     }
-
-
 }
